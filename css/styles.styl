@@ -1,0 +1,98 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap')
+
+// Variables
+root-size= 62.5%
+bg-color= #F7F7F7
+bill-color= #4BBF73
+white-color= #FFFFFF
+black-color= #000000
+gray-color= #E3E3E3
+light-gray= #7F7F7F
+border-radius= 7px
+
+// Styles
+*
+    box-sizing: border-box
+    margin 0
+    padding 0
+
+body
+    font-size: root-size
+    font-family: 'Roboto', sans-serif
+    background: bg-color
+    height: 100vh
+    display: grid
+    grid-template-columns: auto 90% auto
+    grid-template-rows: 70px 77px 1fr 30px
+    row-gap: 20px
+
+    
+
+header
+    background: white-color
+    box-shadow: 0 4px 4px rgba(black-color, 0.04)
+    grid-column: 1 / 4
+
+.header-nav
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    padding: 15px 5%
+    .header-logo img
+        width: 120px
+    .user-section
+        display: flex
+        flex-direction: row
+        align-items: center
+        p
+            color: light-gray
+        img 
+            width: 34px
+aside
+    border-radius: border-radius
+    grid-column: 2 / 3
+    grid-row: 2 / 3
+.aside-nav
+    background: bill-color
+    display: flex
+    justify-content: space-around
+    align-items: center
+    text-align center
+    color: white-color
+    font-weight 500
+    // padding: 0 5%
+    
+main
+    grid-column: 2 / 3
+    grid-row: 3 / 4  
+    h2 
+        font-size: 1.5rem 
+.section-table
+    border-radius: border-radius
+    background: white-color
+    min-height: 350px
+    padding: 5px 15px
+    margin: 10px 0
+table
+    border-collapse: collapse
+    width: 100%
+    margin: 15px 0
+    tr
+        height: 30px;
+        border-bottom: 1px solid light-gray
+    th
+        font-weight 700
+        text-align left
+footer
+    grid-column: 1 / 4
+    grid-row: 4 / 5 
+    background: bill-color
+    color: white-color
+    font-weight: 700
+    text-align center
+    line-height: 30px
+
+
+
