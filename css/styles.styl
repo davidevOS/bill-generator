@@ -109,12 +109,20 @@ table
         background white-color
         border-radius border-radius
         padding 20px 30px
-        div
+        div, span
             margin-bottom 10px
             display flex
             flex-direction column
+            label
+                font-weight 500
         input, select
             input-style()
+        .delete-item
+            width 100%
+            img
+                align-self flex-end
+                cursor pointer
+                width 24px
 .add-item
     margin 15px 0
     width 140px
@@ -124,8 +132,11 @@ table
     border-radius border-radius
     border none
     padding 10px 20px
+    cursor pointer
+        
 .bill-details
     margin 15px 0
+    font-size 1.2em
     .bill-total 
         margin 15px 0
         background white-color
@@ -134,6 +145,8 @@ table
         padding 20px 30px
         display flex
         flex-direction column
+        label 
+            font-weight 500
         input
             input-style()
 .generate-bill
@@ -146,7 +159,8 @@ table
     border none
     padding 10px 20px
     font-size 2em
-    font-weight 500        
+    font-weight 500   
+    cursor pointer     
 footer
     grid-column 1 / 4
     grid-row 4 / 5 

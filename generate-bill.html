@@ -37,51 +37,55 @@
             <div class="customer">
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" >
+                    <input type="text" id="name" name="name"  required>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" >
+                    <input type="email" id="email" name="email"  required>
                 </div>
                 <div>
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" >
+                    <input type="tel" id="phone" name="phone"  required>
                 </div>
                 <div>
                     <label for="address">Address</label>
-                    <input type="text" id="address" name="address" >
+                    <input type="text" id="address" name="address"  required>
                 </div>
             </div>
             <h2>Order</h2>
             <div class="items">
                 <div id="item-1" class="item">
+                    <span id="delete-item-1" class="delete-item"><img src="/assets/clear-icon.svg" alt="clear-icon" onclick="removeItem('delete-item-1')"></span>
                     <div>
                         <label for="select-product">Product</label>
-                        <select name="" id="select-product-1" class="select-product">
+                        <select id="select-product-1" class="select-product">
                             <option value="">Select Product</option>
+                            <option value="product1">Product 1</option>
+                            <option value="product2">Product 2</option>
+                            <option value="product3">Product 3</option>
                         </select>
                     </div>
                     <div>
                         <label for="price">Price</label>
-                        <input type="text" id="price-1" class="price">
+                        <input type="number" id="price-1" class="price" required>
                     </div>
                     <div>
                         <label for="quantity">Quantity</label>
-                        <input type="text" id="quantity-1" class="quantity">
+                        <input type="number" id="quantity-1" class="quantity" onblur="subTotal()" required>
                     </div>
                     <div>
                         <label for="quantity">Subtotal</label>
-                        <input type="text" id="subtotal-1" class="subtotal">
+                        <input type="number" id="subtotal-1" class="subtotal" required>
                     </div>
-                    <div id="delete-item-1" class="delete-order"></div>
                 </div>
-                <button class="add-item">Add More Items</button>
+                
             </div>
+            <div><span class="add-item">Add More Items</span></div>
             <div class="bill-details">
                 <h2>Bill Total</h2>
                 <div class="bill-total">
                     <label for="total">Total</label>
-                    <input type="text" id="total" name="total">
+                    <input type="number" id="total" name="total" >
                 </div>
             </div>
             <button class="generate-bill">Generate Bill</button>
