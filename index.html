@@ -21,12 +21,16 @@
     </header>
     <aside class="aside-nav">
         <div class="create-bill">
-            <img src="/assets/currency-icon.svg" alt="create-bill">
-            <p>Create Bill</p>
+            <a href="generate-bill.html">
+                <img src="/assets/currency-icon.svg" alt="create-bill">
+                <p>Create Bill</p>
+            </a>
         </div>
         <div class="billing-history">
-            <img src="/assets/wallet-icon.svg" alt="billing-history">
-            <p>Billing History</p>
+            <a href="index.html">
+                <img src="/assets/wallet-icon.svg" alt="billing-history">
+                <p>Billing History</p>
+            </a>
         </div>
     </aside>
     <main class="main-section">
@@ -37,97 +41,11 @@
                     <tr>
                         <th>Date</th>
                         <th>Client</th>
-                        <th>Payment Method</th>
                         <th>Total</th>
                         <th>Bill No.</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>May 05, 2021</td>
-                        <td>John Doe</td>
-                        <td>MasterdCard</td>
-                        <td>$100</td>
-                        <td>123456</td>
-                    </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
         </section>
     </main>
@@ -135,5 +53,10 @@
         <p>&copy; David Galeano, 2021</p>
     </footer>
 </body>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<!-- Custom JS -->
+<script src="js/firebase.js"></script>
 <script src="js/main.js"></script>
 </html>

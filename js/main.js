@@ -43,7 +43,6 @@ btnAdd.addEventListener('click', (e) => {
 
 })
 
-
 const removeItem = (item) => {
     const deleteSpan = document.getElementById(item)
     const child = deleteSpan.parentNode

@@ -23,12 +23,16 @@
     </header>
     <aside class="aside-nav">
         <div class="create-bill">
-            <img src="/assets/currency-icon.svg" alt="create-bill">
-            <p>Create Bill</p>
+            <a href="generate-bill.html">
+                <img src="/assets/currency-icon.svg" alt="create-bill">
+                <p>Create Bill</p>
+            </a>
         </div>
         <div class="billing-history">
-            <img src="/assets/wallet-icon.svg" alt="billing-history">
-            <p>Billing History</p>
+            <a href="index.html">
+                <img src="/assets/wallet-icon.svg" alt="billing-history">
+                <p>Billing History</p>
+            </a>
         </div>
     </aside>
     <main class="main-section">
@@ -37,19 +41,19 @@
             <div class="customer">
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name"  >
+                    <input type="text" id="name" name="name"  required>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email"  >
+                    <input type="email" id="email" name="email"  required>
                 </div>
                 <div>
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone"  >
+                    <input type="tel" id="phone" name="phone"  required>
                 </div>
                 <div>
                     <label for="address">Address</label>
-                    <input type="text" id="address" name="address"  >
+                    <input type="text" id="address" name="address"  required>
                 </div>
             </div>
             <h2>Order</h2>
@@ -67,15 +71,15 @@
                     </div>
                     <div>
                         <label for="price">Price</label>
-                        <input type="number" id="price-1" class="price" >
+                        <input type="number" id="price-1" class="price" required>
                     </div>
                     <div>
                         <label for="quantity">Quantity</label>
-                        <input type="number" id="quantity-1" class="quantity" onblur="subTotal()" >
+                        <input type="number" id="quantity-1" class="quantity"required onblur="subTotal()">
                     </div>
                     <div>
                         <label for="quantity">Subtotal</label>
-                        <input type="number" id="subtotal-1" class="subtotal" >
+                        <input type="number" id="subtotal-1" class="subtotal" disabled>
                     </div>
                 </div>
                 
@@ -85,7 +89,7 @@
                 <h2>Bill Total</h2>
                 <div class="bill-total">
                     <label for="total">Total</label>
-                    <input type="number" id="total" name="total" >
+                    <input type="number" id="total" name="total" disabled>
                 </div>
             </div>
             <input type="hidden" name="date" id="date">
