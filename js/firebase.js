@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             <td>${formatted_date}</td>
             <td>${name}</td>
             <td>$.${total}</td>
-            <td>${id}</td>
+            <td><a href="bill-details.html">${id}</a></td>
          </tr>
         `
     })

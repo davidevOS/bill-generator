@@ -5,6 +5,7 @@
 root-size= 62.5%
 bg-color= #F7F7F7
 bill-color= #4BBF73
+bill-hover= #41ab65
 white-color= #FFFFFF
 black-color= #000000
 gray-color= #E3E3E3
@@ -17,6 +18,7 @@ input-style()
     border-radius border-radius
     background rgba(gray-color, 0.4)
     border none
+    padding-left 15px
 
 // Styles
 *
@@ -29,13 +31,18 @@ body
     background bg-color
     height 100vh
     display grid
-    grid-template-columns auto 90% auto
+    grid-template-columns minmax(5%, auto) minmax(250px, 550px) minmax(5%, auto)
     grid-template-rows 70px 77px 1fr 40px
     row-gap 20px
 a
     text-decoration none
+    &:hover
+        color light-gray
     &:visited
         color white-color
+button:hover 
+    background bill-hover
+
 header
     background white-color
     box-shadow 0 4px 4px rgba(black-color, 0.04)
@@ -46,6 +53,7 @@ header
     justify-content space-between
     align-items center
     padding 15px 5%
+    margin-top 5px
     .header-logo img
         width 120px
     .user-section
@@ -54,13 +62,14 @@ header
         align-items center
         p
             color light-gray
+            margin-right: 5px
         img 
             width 34px
-aside
+.aside-nav
+    justify-content center
     border-radius border-radius
     grid-column 2 / 3
     grid-row 2 / 3
-.aside-nav
     background bill-color
     display flex
     justify-content space-around
@@ -89,6 +98,9 @@ table
         border-bottom 1px solid light-gray
     th
         font-weight 700
+    a
+        &:visited
+            color light-gray
 .customer
     margin 15px 0
     background white-color
@@ -164,7 +176,9 @@ table
     padding 10px 20px
     font-size 2em
     font-weight 500   
-    cursor pointer     
+    cursor pointer 
+    &:hover
+        background bill-hover
 footer
     grid-column 1 / 4
     grid-row 4 / 5 

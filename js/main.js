@@ -5,7 +5,7 @@ const container = document.querySelector(".items")
 let count = item.length
 
 btnAdd.addEventListener('click', (e) => {
-    e.preventDefault;
+    e.preventDefault()
     count++
     
     const div = document.createElement('div')
