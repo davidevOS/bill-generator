@@ -64,11 +64,8 @@
                     <span id="delete-item-1" class="delete-item"><img src="/assets/clear-icon.svg" alt="clear-icon" onclick="removeItem('delete-item-1')"></span>
                     <div>
                         <label for="select-product">Product</label>
-                        <select id="select-product-1" class="select-product">
-                            <option value="">Select Product</option>
-                            <option value="product1">Product 1</option>
-                            <option value="product2">Product 2</option>
-                            <option value="product3">Product 3</option>
+                        <select id="select-product-1" class="select-product" onchange="getOption(this)">
+                            <option value="">Select Option</option>
                         </select>
                     </div>
                     <div>

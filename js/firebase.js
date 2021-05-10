@@ -16,6 +16,8 @@ const db = firebase.firestore()
 const billForm = document.querySelector("#bill-form")
 const billsTable = document.querySelector(".section-table table tbody");
 
+
+
 // Save Bill
 const saveBill = (name, email, phone, address, product, price, quantity, subtotal, total, date) => {
     db.collection('bills').doc().set({
@@ -24,8 +26,12 @@ const saveBill = (name, email, phone, address, product, price, quantity, subtota
     })
 }
 
-// Get all Bills
-const getBills = () => db.collection('bills').get();
+// Get Data from Firebasde
+const getBills = () => db.collection('bills').get()
+const getProducts = () =>  db.collection('products').get()
+
+
+const onGetProducts = (callback) => db.collection('products').onSnapshot(callback)
 
 // Render Bills
 window.addEventListener('DOMContentLoaded', async (e) => {
@@ -47,6 +53,23 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             <td><a href="bill-details.html">${id}</a></td>
          </tr>
         `
+    })
+})
+
+// Render Products
+window.addEventListener('DOMContentLoaded', async (e) => {
+    
+    onGetProducts((querySnapshot) => {
+        querySnapshot.forEach(doc => {
+    
+            const product = doc.data().product
+            const price = doc.data().price
+            
+            productOption.innerHTML += `
+            <option value="${product}" data-price="${price}">${product}</option>
+            `
+
+        })
     })
 })
 

@@ -1,6 +1,9 @@
 const btnAdd = document.querySelector('.add-item')
 const item = document.querySelectorAll('.item')
 const container = document.querySelector(".items")
+const priceInput = document.querySelector(".price");
+const productOption = document.querySelector(".select-product");
+
 
 let count = item.length
 
@@ -18,10 +21,6 @@ btnAdd.addEventListener('click', (e) => {
         </span>
         <label for="select-product">Product</label>
         <select id="select-product-${count}" class="select-product">
-            <option value="">Select Product</option>
-            <option value="product1">Product 1</option>
-            <option value="product2">Product 2</option>
-            <option value="product3">Product 3</option>
         </select>
     </div>
     <div>
@@ -57,7 +56,7 @@ const subTotal = () => {
     for (let i = 0; i < count; i++) {
         const price = document.getElementById(`price-${i+1}`).value
         const quantity = document.getElementById(`quantity-${i+1}`).value
-        document.getElementById(`subtotal-${i+1}`).value = parseInt(price) * parseInt(quantity); 
+        document.getElementById(`subtotal-${i+1}`).value = price * quantity
         
     }
 
@@ -66,10 +65,10 @@ const subTotal = () => {
 
 const sumTotal = () => {
     count
-    let totalAmount = 0
+    let totalAmount = ""
     for (let i = 0; i < count; i++) {
         const quantity = document.getElementById(`subtotal-${i+1}`).value
-        const subtotal = parseInt(quantity)
+        const subtotal = quantity
 
         totalAmount += subtotal
         
@@ -78,3 +77,8 @@ const sumTotal = () => {
     document.getElementById('total').value = totalAmount
     
 }
+
+function getOption(obj) { 
+    const productPrice = obj.options[obj.selectedIndex].getAttribute('data-price');
+    priceInput.value = productPrice
+} 
