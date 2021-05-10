@@ -32,24 +32,24 @@
         </div>
     </aside>
     <main class="main-section">
-        <form action="" class="bill-form">
+        <form action="" id="bill-form">
             <h2>Customer</h2>
             <div class="customer">
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name"  required>
+                    <input type="text" id="name" name="name"  >
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email"  required>
+                    <input type="email" id="email" name="email"  >
                 </div>
                 <div>
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone"  required>
+                    <input type="tel" id="phone" name="phone"  >
                 </div>
                 <div>
                     <label for="address">Address</label>
-                    <input type="text" id="address" name="address"  required>
+                    <input type="text" id="address" name="address"  >
                 </div>
             </div>
             <h2>Order</h2>
@@ -67,15 +67,15 @@
                     </div>
                     <div>
                         <label for="price">Price</label>
-                        <input type="number" id="price-1" class="price" required>
+                        <input type="number" id="price-1" class="price" >
                     </div>
                     <div>
                         <label for="quantity">Quantity</label>
-                        <input type="number" id="quantity-1" class="quantity" onblur="subTotal()" required>
+                        <input type="number" id="quantity-1" class="quantity" onblur="subTotal()" >
                     </div>
                     <div>
                         <label for="quantity">Subtotal</label>
-                        <input type="number" id="subtotal-1" class="subtotal" required>
+                        <input type="number" id="subtotal-1" class="subtotal" >
                     </div>
                 </div>
                 
@@ -88,13 +88,20 @@
                     <input type="number" id="total" name="total" >
                 </div>
             </div>
-            <button class="generate-bill">Generate Bill</button>
+            <input type="hidden" name="date" id="date">
+            <button type="submit" id="generate-bill">Generate Bill</button>
         </form>
     </main>
     <footer>
         <p>&copy; David Galeano, 2021</p>
     </footer>
 </body>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<!-- Custom JS -->
+<script src="js/firebase.js"></script>
 <script src="js/main.js"></script>
+
 
 </html>
