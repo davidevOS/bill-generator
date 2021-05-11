@@ -6,6 +6,7 @@ A web app designed to generate bills in a easy way.
 * HTML
 * CSS
 * JavaScript (Vanilla)
+* Stylus
 
 ## App Demo
 
