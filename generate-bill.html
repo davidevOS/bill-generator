@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="/favicon.ico" />
     <link rel="stylesheet" href="css/styles.css">
     <title>BillGenerator - Generate Bill</title>
 </head>
@@ -38,24 +39,24 @@
         </div>
     </aside>
     <main class="main-section">
-        <form action="" id="bill-form">
+        <form action="" id="bill-form" autocomplete="off">
             <h2>Customer</h2>
             <div class="customer">
                 <div>
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name"  >
+                    <input type="text" id="name" name="name" required>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email"  >
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div>
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone"  >
+                    <input type="tel" id="phone" name="phone" required>
                 </div>
                 <div>
                     <label for="address">Address</label>
-                    <input type="text" id="address" name="address"  >
+                    <input type="text" id="address" name="address" required>
                 </div>
             </div>
             <h2>Order</h2>
@@ -64,17 +65,17 @@
                     <span id="delete-item-1" class="delete-item"><img src="/assets/clear-icon.svg" alt="clear-icon" onclick="removeItem('delete-item-1')"></span>
                     <div>
                         <label for="select-product">Product</label>
-                        <select id="select-product-1" class="select-product" onchange="getOption(this)">
+                        <select id="select-product-1" class="select-product" onchange="getOption(this)" required>
                             <option value="">Select Option</option>
                         </select>
                     </div>
                     <div>
                         <label for="price">Price</label>
-                        <input type="number" id="price-1" class="price" step=".01">
+                        <input type="number" id="price-1" class="price" step=".01" disabled>
                     </div>
                     <div>
                         <label for="quantity">Quantity</label>
-                        <input type="number" id="quantity-1" class="quantity" onblur="subTotal()">
+                        <input type="number" id="quantity-1" class="quantity" onblur="subTotal()" required>
                     </div>
                     <div>
                         <label for="subtotal">Subtotal</label>

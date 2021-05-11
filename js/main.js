@@ -20,7 +20,7 @@ btnAdd.addEventListener('click', (e) => {
             <img src="/assets/clear-icon.svg" alt="clear-icon" onclick="removeItem('delete-item-${count}')">
         </span>
         <label for="select-product">Product</label>
-        <select id="select-product-${count}" class="select-product" onchange="getOption(this)">
+        <select id="select-product-${count}" class="select-product" onchange="getOption(this)" required>
             <option value="">Select Option</option>                        
             <option value="Fruit Snacks" data-price="3.2">Fruit Snacks</option>            
             <option value="Cereal" data-price="2.3">Cereal</option>            
@@ -36,15 +36,15 @@ btnAdd.addEventListener('click', (e) => {
     </div>
     <div>
         <label for="price">Price</label>
-        <input type="number" id="price-${count}" class="price" step=".01">
+        <input type="number" id="price-${count}" class="price" step=".01" disabled>
     </div>
     <div>
         <label for="quantity">Quantity</label>
         <input type="number" id="quantity-${count}" class="quantity" onblur="subTotal()" >
     </div>
     <div>
-        <label for="quantity">Subtotal</label>
-        <input type="number" id="subtotal-${count}" class="subtotal" >
+        <label for="subtotal">Subtotal</label>
+        <input type="number" id="subtotal-${count}" class="subtotal" disabled>
     </div>
     <div id="delete-item-${count}" class="delete-order"></div>
     `

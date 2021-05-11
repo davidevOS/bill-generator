@@ -16,6 +16,7 @@ const db = firebase.firestore()
 const billForm = document.querySelector("#bill-form")
 const billsTable = document.querySelector(".section-table table tbody");
 
+let options = { style: 'currency', currency: 'USD' };
 
 
 // Save Bill
@@ -37,13 +38,14 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const formatted_date = date.toDate().toLocaleString("en-CA", { year: 'numeric', month: 'numeric', day: 'numeric' });
         const name = doc.data().name
         const total = doc.data().total
+        const totalFormatted = new Intl.NumberFormat('en-US', options).format(total);
         const id = doc.id
         
         billsTable.innerHTML += `
          <tr>
             <td>${formatted_date}</td>
             <td>${name}</td>
-            <td>$.${total}</td>
+            <td>${totalFormatted}</td>
             <td><a href="bill-details.html">${id}</a></td>
          </tr>
         `
@@ -77,6 +79,7 @@ billForm.addEventListener("submit", async (event) =>  {
         phone: billForm['phone'].value,
         address: billForm['address'].value,
         total: billForm['total'].value,
+        date: firebase.firestore.FieldValue.serverTimestamp()
     }
      
     for (let i = 0; i < count; i++) {
@@ -93,5 +96,8 @@ billForm.addEventListener("submit", async (event) =>  {
     await db.collection("bills").doc().set(docData).then(() => {
         console.log("Document successfully written!");
     });
+
+    billForm.reset()
+    alert('The Bill was generated!')
 })
 
