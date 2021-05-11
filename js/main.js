@@ -40,7 +40,7 @@ btnAdd.addEventListener('click', (e) => {
     </div>
     <div>
         <label for="quantity">Quantity</label>
-        <input type="number" id="quantity-${count}" class="quantity" onblur="subTotal()" >
+        <input type="number" id="quantity-${count}" class="quantity" onblur="subTotal()" required>
     </div>
     <div>
         <label for="subtotal">Subtotal</label>

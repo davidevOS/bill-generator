@@ -44,23 +44,23 @@
             <div class="customer">
                 <div>
                     <label for="name">Name</label>
-                    <p>John Doe</p>
+                    <p id="bill-details--name"></p>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <p>johndoe@gmail.com</p>
+                    <p id="bill-details--email"></p>
                 </div>
                 <div>
                     <label for="phone">Phone Number</label>
-                    <p>+55 (355) 318-8512</p>
+                    <p id="bill-details--phone"></p>
                 </div>
                 <div>
                     <label for="address">Billing Address</label>
-                    <p>39, Hilbert Shore <br> New York, NY, United States</p>
+                    <p id="bill-details--address"></p>
                 </div>
             </div>
             <h2>Order</h2>
-            <div class="section-table">
+            <div class="bill-details--table">
                 <table>
                     <thead>
                         <tr>
@@ -71,30 +71,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Product Detail</td>
-                            <td>$60.00</td>
-                            <td>10</td>
-                            <td>$600</td>
-                        </tr>
-                        <tr>
-                            <td>Product Detail</td>
-                            <td>$60.00</td>
-                            <td>10</td>
-                            <td>$600</td>
-                        </tr>
-                        <tr>
-                            <td>Product Detail</td>
-                            <td>$60.00</td>
-                            <td>10</td>
-                            <td>$600</td>
-                        </tr>
-                        <tr>
-                            <td>Product Detail</td>
-                            <td>$60.00</td>
-                            <td>10</td>
-                            <td>$600</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -102,7 +78,7 @@
                 <h2>Bill Total</h2>
                 <div class="bill-total">
                     <label for="total">Total</label>
-                    <h2>$1800.00</h2>
+                    <h2 id="bill-details--total"></h2>
                 </div>
             </div>
         </form>
@@ -111,6 +87,11 @@
         <p>&copy; David Galeano, 2021</p>
     </footer>
 </body>
-<script src="js/main.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <!-- Custom JS -->
+    <script src="js/firebase.js"></script>
+    <script src="js/main.js"></script>
 
 </html>

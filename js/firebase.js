@@ -14,21 +14,34 @@
 const db = firebase.firestore()
 
 const billForm = document.querySelector("#bill-form")
-const billsTable = document.querySelector(".section-table table tbody");
+const billsTable = document.querySelector(".section-table table tbody")
+const billDetailsName = document.getElementById("bill-details--name")
+const billDetailsEmail = document.getElementById("bill-details--email")
+const billDetailsPhone = document.getElementById("bill-details--phone")
+const billDetailsAddress = document.getElementById("bill-details--address")
+const billDetailsTable = document.querySelector(".bill-details--table table tbody")
+const billDetailsTotal = document.getElementById("bill-details--total")
 
 let options = { style: 'currency', currency: 'USD' };
 
-
-// Save Bill
+// URL Param
+const queryString = window.location.search
+const urlParams = new URLSearchParams(queryString)
+const billId = urlParams.get('id')
 
 // Get Data from Firebasde
 const getBills = () => db.collection('bills').get()
 const getProducts = () =>  db.collection('products').get()
+const getBill = () => db.collection('bills').doc(billId).get()
+
+
+
+console.log(billId)
 
 
 const onGetProducts = (callback) => db.collection('products').onSnapshot(callback)
 
-// Render Bills
+// Get Bills
 window.addEventListener('DOMContentLoaded', async (e) => {
     const querySnapshot = await getBills()
     querySnapshot.forEach(doc => {
@@ -46,13 +59,48 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             <td>${formatted_date}</td>
             <td>${name}</td>
             <td>${totalFormatted}</td>
-            <td><a href="bill-details.html">${id}</a></td>
+            <td><a href="bill-details.html?id=${id}" onclick="getBill('${id}')">${id}</a></td>
          </tr>
         `
     })
 })
 
-// Render Products
+// Get bill details
+window.addEventListener('DOMContentLoaded', async (e) => {
+    const snapshot = await getBill()
+    const doc = snapshot.data()
+    const name = doc.name
+    const email = doc.email
+    const phone = doc.phone
+    const address = doc.address
+    const product = doc.product1
+    const price = doc.price1
+    const quantity = doc.quantity1
+    const subtotal = doc.subtotal1
+    const total = doc.total
+
+    const priceFormatted = new Intl.NumberFormat('en-US', options).format(price);
+    const subtotalFormatted = new Intl.NumberFormat('en-US', options).format(subtotal);
+    const totalFormatted = new Intl.NumberFormat('en-US', options).format(total);
+
+    billDetailsName.innerHTML = name
+    billDetailsEmail.innerHTML = email
+    billDetailsPhone.innerHTML = phone
+    billDetailsAddress.innerHTML = address
+    billDetailsTable.innerHTML += `
+     <tr>
+        <td>${product}</td>
+        <td>${priceFormatted}</td>
+        <td>${quantity}</td>
+        <td>${subtotalFormatted}</td>
+     </tr>
+    `
+    billDetailsTotal.innerHTML = totalFormatted
+    
+})
+
+
+// Get Products
 window.addEventListener('DOMContentLoaded', async (e) => {
     
     onGetProducts((querySnapshot) => {
@@ -70,6 +118,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 })
 
 
+// Save Bill
 billForm.addEventListener("submit", async (event) =>  {
     event.preventDefault();
 
@@ -83,9 +132,10 @@ billForm.addEventListener("submit", async (event) =>  {
     }
      
     for (let i = 0; i < count; i++) {
-        docData[`price-${i+1}`] = billForm[`quantity-${i+1}`].value
-        docData[`quantity-${i+1}`] = billForm[`price-${i+1}`].value
-        docData[`subtotal-${i+1}`] = billForm[`subtotal-${i+1}`].value
+        docData[`product${i+1}`] = billForm[`select-product-${i+1}`].value
+        docData[`price${i+1}`] = billForm[`price-${i+1}`].value
+        docData[`quantity${i+1}`] = billForm[`quantity-${i+1}`].value
+        docData[`subtotal${i+1}`] = billForm[`subtotal-${i+1}`].value
         
     }
 
@@ -97,7 +147,7 @@ billForm.addEventListener("submit", async (event) =>  {
         console.log("Document successfully written!");
     });
 
-    billForm.reset()
     alert('The Bill was generated!')
+    location.reload()
 })
 
