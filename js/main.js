@@ -1,7 +1,7 @@
 const btnAdd = document.querySelector('.add-item')
 const item = document.querySelectorAll('.item')
 const container = document.querySelector(".items")
-const priceInput = document.querySelector(".price");
+// const priceInput = document.getElementsByClassName(".price");
 const productOption = document.querySelector(".select-product");
 
 
@@ -20,20 +20,31 @@ btnAdd.addEventListener('click', (e) => {
             <img src="/assets/clear-icon.svg" alt="clear-icon" onclick="removeItem('delete-item-${count}')">
         </span>
         <label for="select-product">Product</label>
-        <select id="select-product-${count}" class="select-product">
+        <select id="select-product-${count}" class="select-product" onchange="getOption(this)">
+            <option value="">Select Option</option>                        
+            <option value="Fruit Snacks" data-price="3.2">Fruit Snacks</option>            
+            <option value="Cereal" data-price="2.3">Cereal</option>            
+            <option value="Eggs" data-price="3.3">Eggs</option>            
+            <option value="Coffee" data-price="5">Coffee</option>            
+            <option value="Laundry Detergen" data-price="7">Laundry Detergen</option>            
+            <option value="Milk" data-price="2.5">Milk</option>            
+            <option value="Ketchup" data-price="2">Ketchup</option>            
+            <option value="Chips" data-price="2.5">Chips</option>            
+            <option value="Butter (Stick)" data-price="2">Butter (Stick)</option>            
+            <option value="Oil (vegetable)" data-price="4.5">Oil (vegetable)</option>
         </select>
     </div>
     <div>
         <label for="price">Price</label>
-        <input type="number" id="price-${count}" class="price" required>
+        <input type="number" id="price-${count}" class="price" step=".01">
     </div>
     <div>
         <label for="quantity">Quantity</label>
-        <input type="number" id="quantity-${count}" class="quantity" onblur="subTotal()" required>
+        <input type="number" id="quantity-${count}" class="quantity" onblur="subTotal()" >
     </div>
     <div>
         <label for="quantity">Subtotal</label>
-        <input type="number" id="subtotal-${count}" class="subtotal" required>
+        <input type="number" id="subtotal-${count}" class="subtotal" >
     </div>
     <div id="delete-item-${count}" class="delete-order"></div>
     `
@@ -65,10 +76,10 @@ const subTotal = () => {
 
 const sumTotal = () => {
     count
-    let totalAmount = ""
+    let totalAmount = 0
     for (let i = 0; i < count; i++) {
         const quantity = document.getElementById(`subtotal-${i+1}`).value
-        const subtotal = quantity
+        const subtotal = parseFloat(quantity)
 
         totalAmount += subtotal
         
@@ -78,7 +89,12 @@ const sumTotal = () => {
     
 }
 
-function getOption(obj) { 
+const getOption = (obj) => { 
+    count
     const productPrice = obj.options[obj.selectedIndex].getAttribute('data-price');
+    let priceInput = ""
+    for (let i = 0; i < count; i++) {
+        priceInput = document.querySelector("#price-"+(i+1))
+    }
     priceInput.value = productPrice
 } 

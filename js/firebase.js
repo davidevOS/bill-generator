@@ -19,12 +19,6 @@ const billsTable = document.querySelector(".section-table table tbody");
 
 
 // Save Bill
-const saveBill = (name, email, phone, address, product, price, quantity, subtotal, total, date) => {
-    db.collection('bills').doc().set({
-        name, email, phone, address, product, price, quantity,
-        subtotal, total, date
-    })
-}
 
 // Get Data from Firebasde
 const getBills = () => db.collection('bills').get()
@@ -77,22 +71,27 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 billForm.addEventListener("submit", async (event) =>  {
     event.preventDefault();
 
-    const name = billForm['name']
-    const email = billForm['email']
-    const phone = billForm['phone']
-    const address = billForm['address']
-    const product = billForm['select-product-1']
-    const price = billForm['price-1']
-    const quantity = billForm['quantity-1']
-    const subtotal = billForm['subtotal-1']
-    const total = billForm['total']
+    let docData = {
+        name: billForm['name'].value,
+        email: billForm['email'].value,
+        phone: billForm['phone'].value,
+        address: billForm['address'].value,
+        total: billForm['total'].value,
+    }
+     
+    for (let i = 0; i < count; i++) {
+        docData[`price-${i+1}`] = billForm[`quantity-${i+1}`].value
+        docData[`quantity-${i+1}`] = billForm[`price-${i+1}`].value
+        docData[`subtotal-${i+1}`] = billForm[`subtotal-${i+1}`].value
+        
+    }
 
-    let date = firebase.firestore.FieldValue.serverTimestamp()
-    
-    await saveBill(name.value, email.value, phone.value, address.value, product.value, price.value, quantity.value, subtotal.value, total.value, date)
+    console.log(docData)
 
-    billForm.reset()
-    name.focus()
-    alert('Bill was generated')
+    // debugger
+
+    await db.collection("bills").doc().set(docData).then(() => {
+        console.log("Document successfully written!");
+    });
 })
 
