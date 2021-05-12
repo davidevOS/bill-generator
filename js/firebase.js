@@ -69,33 +69,36 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 window.addEventListener('DOMContentLoaded', async (e) => {
     const snapshot = await getBill()
     const doc = snapshot.data()
+
+    // console.log(doc.prices[0])
+
+    let totalProducts = doc.products.length
+
     const name = doc.name
     const email = doc.email
     const phone = doc.phone
     const address = doc.address
-    const product = doc.product1
-    const price = doc.price1
-    const quantity = doc.quantity1
-    const subtotal = doc.subtotal1
     const total = doc.total
-
-    const priceFormatted = new Intl.NumberFormat('en-US', options).format(price);
-    const subtotalFormatted = new Intl.NumberFormat('en-US', options).format(subtotal);
     const totalFormatted = new Intl.NumberFormat('en-US', options).format(total);
 
     billDetailsName.innerHTML = name
     billDetailsEmail.innerHTML = email
     billDetailsPhone.innerHTML = phone
     billDetailsAddress.innerHTML = address
-    billDetailsTable.innerHTML += `
-     <tr>
-        <td>${product}</td>
-        <td>${priceFormatted}</td>
-        <td>${quantity}</td>
-        <td>${subtotalFormatted}</td>
-     </tr>
-    `
+
+    for (let i = 0; i < totalProducts; i++) {
+        billDetailsTable.innerHTML += `
+         <tr>
+            <td>${doc.products[i]}</td>
+            <td>${new Intl.NumberFormat('en-US', options).format(doc.prices[i])}</td>
+            <td>${doc.quantities[i]}</td>
+            <td>${new Intl.NumberFormat('en-US', options).format(doc.subtotals[i])}</td>
+        `
+    }
+
     billDetailsTotal.innerHTML = totalFormatted
+
+    // debugger
     
 })
 
@@ -128,17 +131,27 @@ billForm.addEventListener("submit", async (event) =>  {
         phone: billForm['phone'].value,
         address: billForm['address'].value,
         total: billForm['total'].value,
-        date: firebase.firestore.FieldValue.serverTimestamp()
+        date: firebase.firestore.FieldValue.serverTimestamp(),
     }
      
-    for (let i = 0; i < count; i++) {
-        docData[`product${i+1}`] = billForm[`select-product-${i+1}`].value
-        docData[`price${i+1}`] = billForm[`price-${i+1}`].value
-        docData[`quantity${i+1}`] = billForm[`quantity-${i+1}`].value
-        docData[`subtotal${i+1}`] = billForm[`subtotal-${i+1}`].value
-        
-    }
+    let products = []
+    let prices = []
+    let quantities = []
+    let subtotals = []
 
+    docData['products'] = products
+    docData['prices'] = prices
+    docData['quantities'] = quantities
+    docData['subtotals'] = subtotals
+
+    
+    for (let i = 0; i < count; i++) {
+        products.push(billForm[`select-product-${i+1}`].value)
+        prices.push(billForm[`price-${i+1}`].value)
+        quantities.push(billForm[`quantity-${i+1}`].value)
+        subtotals.push(billForm[`subtotal-${i+1}`].value)
+    }
+    
     console.log(docData)
 
     // debugger
