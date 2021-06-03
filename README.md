@@ -39,6 +39,9 @@ This project can be cloned from the following repository:
 
 *No need to install dependencies. Just open the index.html file in your browser.
 
+## Coach: 
+Ana Belisa Martínez
+
 ## Developed By: 
 
 Slack: [David Galeano [C7] ](https://github.com/davidevOS) |  Frontend
